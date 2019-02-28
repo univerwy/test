@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "xmlspec.dtd">
+<!-- status : 这个用于设置log4j2自身内部的信息输出,可以不设置,当设置成trace时,会看到log4j2内部各种详细输出 -->
+<!-- monitorInterval : Log4j能够自动检测修改配置文件和重新配置本身, 设置间隔秒数。 -->
+<configuration status="WARN" monitorInterval="60">
+	<description>log4j2配置</description>
+	<appenders>
+		<console name="console" target="SYSTEM_OUT">
+			<thresholdFilter level="info" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<patternLayout
+				pattern="[%-5p][ %-22d{yyyy-MM-dd HH:mm:ss S}][ %l]%n    MSG : %m%n" />
+		</console>
+		<rollingFile name="file"
+			fileName="C:/log4j2/univer-web-base/log.log"
+			filePattern="C:/log4j2/univer-web-base/$${date:yyyy-MM}/log-%d{yyyy-MM-dd}-%i.log">
+			<thresholdFilter level="info" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<patternLayout
+				pattern="[%-5p][ %-22d{yyyy-MM-dd HH:mm:ss S}][ %l]    MSG : %m%n" />
+			<policies>
+				<timeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</policies>
+		</rollingFile>
+	</appenders>
+	<loggers>
+		<root level="all">
+			<appender-ref ref="console" />
+			<appender-ref ref="file" />
+		</root>
+	</loggers>
+</configuration>

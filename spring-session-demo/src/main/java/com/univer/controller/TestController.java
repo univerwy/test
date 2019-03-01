@@ -17,6 +17,7 @@ public class TestController {
 		HttpSession session = request.getSession();
 		session.setAttribute("session_user", user);
 		view.addObject("server_id", "you are requesting server_1");
+		view.addObject("session_id", session.getId());
 		view.setViewName("result");
 		return view;
 	}
@@ -24,7 +25,9 @@ public class TestController {
 	@RequestMapping(value = "/check")
 	public ModelAndView check(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
+		HttpSession session = request.getSession();
 		view.addObject("server_id", "you are requesting server_1");
+		view.addObject("session_id", session.getId());
 		view.setViewName("result");
 		return view;
 	}

@@ -9,7 +9,8 @@
 <body>
 	<div>
 		server info : ${server_id } <br>
-		session_user : ${session_user }
+		session_user : ${session_user } <br>
+		session_id : ${session_id }
 	</div>
 </body>
 </html>

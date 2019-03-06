@@ -18,6 +18,7 @@
 	<context:property-placeholder
 		location="classpath:conf/config.properties" />
 
+	<!-- spring接管session存入redis -->
 	<bean id="redisHttpSessionConfiguration"
 		class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
 		<property name="maxInactiveIntervalInSeconds" value="600" />
